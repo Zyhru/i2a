@@ -2,13 +2,15 @@
 #include <iostream>
 
 int main(int argc, char **argv) {
-  if (argc != 2) {
-    std::cerr << "fmt: ./ascii <image_path>";
+  if (argc != 3) {
+    std::cerr << "usage: ./ascii <image_path> <width>";
     return -1;
   }
 
   char *file_name = argv[1];
-  Image image(file_name);
+  int width = std::atoi(argv[2]);
+
+  Image image(file_name, width);
   image.processImage();
 
   return 0;

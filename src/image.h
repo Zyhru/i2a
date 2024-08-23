@@ -2,36 +2,42 @@
 
 #include <iostream>
 #include <fstream>
-//#include <format>
+#include <format>
 #include <vector>
 #include <cstdint>
 
-
 class Image {
 public:
-	Image(std::string filename) : _file_name(filename) {
+	Image(std::string file, int w) : file_name(file), user_width(w) {
 		if(!loadImage()) {
-			//std::cerr << std::format("failed to load image {}", filename);
+			std::cerr << "failed to load image" << std::endl;
 			return;
 		}
+
 	};
 	
 	~Image();
-
 
 	bool loadImage();
 	void processImage();
 
 private:
-	std::string _file_name;
-	std::string _format;
-	int _width;
-	int _height;
-	int _nrChannels;
-	int _desired_channels;
-	unsigned char *data;
+	// original image info
+	std::string file_name;
+	int width;
+	int height;
+	int channels;
+	uint8_t* data;
+
+	char* output;
+	std::string format;
+	int default_channels;
+	int user_width;
+	int user_height;
 
 	void imageInfo();
+	void imageResize();
+	void printImage();
 	float rgbToGrayScale(uint8_t r, uint8_t g, uint8_t b);
-	
+
 };
