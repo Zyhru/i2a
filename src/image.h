@@ -10,8 +10,7 @@ class Image {
 public:
 	Image(std::string file, int w) : file_name(file), user_width(w) {
 		if(!loadImage()) {
-			std::cerr << "failed to load image" << std::endl;
-			return;
+			throw std::runtime_error("failed to load image: " + file_name);
 		}
 
 	};
