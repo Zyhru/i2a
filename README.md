@@ -20,15 +20,11 @@ This C++ project converts images into ASCII art.
 After building, use the following command to convert an image to ASCII:
 
     
-    i2a <file_path>
+    i2a <file_path> <width>
     
 
 Replace `<file_path>` with the path to your image file.
-
-## Example
-To convert `example.png`, use:
-
-    i2a example.png
+Replace  `<width>` with a width of your choice. Preferably 80-120
 
 ## Dependencies
 - C++ compiler (e.g., g++)
